@@ -3,7 +3,8 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 const app = express()
-const PORT = 3000
+// const PORT = 3000
+const PORT = process.env.PORT || 3000;
 const {mogoUrl} = require('./keys')
 
 
@@ -46,6 +47,9 @@ app.get('/',requireToken,(req,res)=>{
     res.send({email:req.user.email})
 })
 
-app.listen(PORT,()=>{
-    console.log("server running "+PORT)
-})
+// app.listen(PORT,()=>{
+//     console.log("server running "+PORT)
+// })
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
